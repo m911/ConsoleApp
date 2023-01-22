@@ -1,49 +1,129 @@
 ﻿using System;
-
 namespace ConsoleApp_SoftUni
 {
+	static class MyClass
+	{
+		public static bool IsBetween(this int value, int minimum, int maximum)
+		{
+			return value >= minimum && value <= maximum;
+		}
+	}
 	class Integers
 	{
 		static void Main()
 		{
-			double nylonPrice = 1.5 * IntRead();
-			double paintPrice = 14.50 * IntRead();
-			int diluentPrice = 5 * IntRead();
-			int hours = IntRead();
+			//string input = Console.ReadLine().ToLower();
 
-			double totalPrice = nylonPrice + paintPrice + diluentPrice;
+			//double input = DoubleRead();
 
-			double discount2 = Convert.ToDouble(hours) / 100;
-			double discountPrice = totalPrice * discount2;
+			int input = IntRead();
+			//int input2 = IntRead();
+			//int input3 = IntRead();
 
-			double result = totalPrice - discountPrice;
-			DoublePrint(result);
-		}
-
-		public static object Discounted (int discount, double discountedPrice)
-		{
-			discount = discount/ 100;
 			
 
-			return new object();
+			//string[] shapes = { "square", "rectangle", "circle", "triangle" };
+			//int position = Position(input, shapes);
+
+			int bonusPoints = 0;
+			switch (true)
+			{
+				case input.IsBetween(0, 100):
+					double a = Math.Abs(DoubleRead());
+					double res1 = Math.Pow(a, 2);
+					Console.WriteLine($"{res1:f3}");
+					break;
+				case 2:
+					double c = Math.Abs(DoubleRead());
+					double b = Math.Abs(DoubleRead());
+					Console.WriteLine($"{c * b:f3}");
+					break;
+				case 3:
+					double d = Math.Abs(DoubleRead());
+					double res2 = Math.PI * Math.Pow(d, 2);
+					Console.WriteLine($"{res2:f3}");
+					break;
+				case 4:
+					double e = Math.Abs(DoubleRead());
+					double f = Math.Abs(DoubleRead());
+					double res3 = (e * f) / 2;
+					Console.WriteLine($"{res3:f3}");
+					break;
+			}
+
 		}
 
-		public static int IntRead()
+		static int Position(string input, string[] array)
+		{
+			int pos = 0;
+			for (int i = 0; i < array.Length; i++)
+
+			{
+				if (array[i] == input)
+				{
+					pos = i + 1;
+					break;
+				}
+			}
+			return pos;
+		}
+
+		static int IntRead()
 		{ return int.Parse(Console.ReadLine()); }
 
-		public static double DoubleRead()
+		static double DoubleRead()
 		{ return double.Parse(Console.ReadLine()); }
 
-		public static void IntPrint(int item)
+		static string StringRead()
+		{ return Console.ReadLine(); }
+
+		static void IntPrint(int item)
 		{
 			string result = item.ToString();
 			Console.WriteLine(result);
 		}
 
-		public static void DoublePrint(double item)
+		static void DoublePrint(double item)
 		{
 			string result = item.ToString();
 			Console.WriteLine(result);
+		}
+
+		static void StringPrint(string item)
+		{
+			Console.WriteLine(item);
+		}
+	}
+
+
+	enum CheckString
+	{
+		square,
+		rectangle,
+		circle,
+		triangle,
+	}
+
+	class PercentCalc
+	{
+		public double persentPart;
+		public double loweredSum;
+		public double increasedSum;
+
+		public PercentCalc(int percent, double sum)
+		{
+			double newPercent = Convert.ToDouble(percent);
+			persentPart = sum * (newPercent / 100);
+			loweredSum = sum - persentPart;
+			increasedSum = sum + persentPart;
+
+		}
+		public PercentCalc(double percent, double sum)
+		{
+			persentPart = sum * (percent / 100);
+			loweredSum = sum - persentPart;
+			increasedSum = sum + persentPart;
+
 		}
 	}
 }
