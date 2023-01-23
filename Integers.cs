@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Principal;
+
 namespace ConsoleApp_SoftUni
 {
 	static class MyClass
@@ -7,59 +10,45 @@ namespace ConsoleApp_SoftUni
 		{
 			return value >= minimum && value <= maximum;
 		}
+		public static bool IsBetween(this int value, double minimum, double maximum)
+		{
+			return value >= minimum && value <= maximum;
+		}
 	}
 	class Integers
 	{
 		static void Main()
 		{
-			//string input = Console.ReadLine().ToLower();
+			string[] arrayDays ={
+			"Monday",
+			"Touesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday",
+			"Sunday"
+			};
 
-			//double input = DoubleRead();
+			List<string> dayNames = new List<string>(arrayDays);
 
-			int input = IntRead();
-			//int input2 = IntRead();
-			//int input3 = IntRead();
-
+			//Kinds ot Console read -->
+			//double budget = DoubleRead();
+			//int video = IntRead();
+			//string movieName = Console.ReadLine();
+			//int totalBreak = IntRead();
+			int query = IntRead();
+			
 			
 
-			//string[] shapes = { "square", "rectangle", "circle", "triangle" };
-			//int position = Position(input, shapes);
-
-			int bonusPoints = 0;
-			switch (true)
-			{
-				case input.IsBetween(0, 100):
-					double a = Math.Abs(DoubleRead());
-					double res1 = Math.Pow(a, 2);
-					Console.WriteLine($"{res1:f3}");
-					break;
-				case 2:
-					double c = Math.Abs(DoubleRead());
-					double b = Math.Abs(DoubleRead());
-					Console.WriteLine($"{c * b:f3}");
-					break;
-				case 3:
-					double d = Math.Abs(DoubleRead());
-					double res2 = Math.PI * Math.Pow(d, 2);
-					Console.WriteLine($"{res2:f3}");
-					break;
-				case 4:
-					double e = Math.Abs(DoubleRead());
-					double f = Math.Abs(DoubleRead());
-					double res3 = (e * f) / 2;
-					Console.WriteLine($"{res3:f3}");
-					break;
-			}
-
+			//End of Main()-->
 		}
 
-		static int Position(string input, string[] array)
+		static int Position(bool[] array)
 		{
 			int pos = 0;
 			for (int i = 0; i < array.Length; i++)
-
 			{
-				if (array[i] == input)
+				if (array[i] == true)
 				{
 					pos = i + 1;
 					break;
@@ -93,15 +82,6 @@ namespace ConsoleApp_SoftUni
 		{
 			Console.WriteLine(item);
 		}
-	}
-
-
-	enum CheckString
-	{
-		square,
-		rectangle,
-		circle,
-		triangle,
 	}
 
 	class PercentCalc
