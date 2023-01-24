@@ -1,32 +1,26 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.CodeDom.Compiler;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
-using System.Runtime.CompilerServices;
 
 namespace ConsoleApp_SoftUni
 {
 	class Integers : Methods
 	{
+		string firstMember = "";
+		string shoes = "";
+
+		public Integers(string _outfit, string _shoes)
+		{
+			this.firstMember = _outfit;
+			this.shoes = _shoes;
+		}
+
+		public void setMembers(string _outfit, string _shoes)
+		{
+			this.firstMember = _outfit;
+			this.shoes = _shoes;
+		}
 		static void Main()
 		{
-			//Kinds ot Console read -->
-			//double age = DoubleRead();
-			//int video = IntRead();
-			string product = StringRead();
-			string day = StringRead();
-			//int number = IntRead();
-			double quantity = DoubleRead();
-			
 			List<string> workingDays = new List<string>(new string[]
 			{
 				DayOfWeek.Monday.ToString(),
@@ -34,46 +28,47 @@ namespace ConsoleApp_SoftUni
 				DayOfWeek.Wednesday.ToString(),
 				DayOfWeek.Thursday.ToString(),
 				DayOfWeek.Friday.ToString(),
-                DayOfWeek.Saturday.ToString(),
-                DayOfWeek.Sunday.ToString(),
+				DayOfWeek.Saturday.ToString(),
+				DayOfWeek.Sunday.ToString(),
 			});
 
+			//Kinds ot Console read -->
+			//double age = DoubleRead();
+			string userString = StringRead();
+			int flowersCount = IntRead();
+			int budget = IntRead();
+			//double sells = DoubleRead();
+			//string day = StringRead();
 
-			List<double> priceWorkingday = new List<double>(new double[]
+
+			 string[] flowers =
 			{
-				2.50 ,1.20,0.85,1.45,2.70,5.50,3.85
-			});
+				"Roses",
+				"Dahlias",
+				"Tulips",
+				"Narcissus",
+				"Gladiolus"
+			};
 
-			List<double> priceWeekend = new List<double>(new double[]
-            {
-                    2.70,1.25,0.90,1.6,3,5.6,4.2
-            });
+			double[] prices = { 5, 3.8, 2.8, 3, 2.5 };
 
-			List<string> fruits = new List<string>(new string[]
+			int partOfTheDayIndex = stringList.IndexOf(userString);
+			//int fruitsIndex = commisions.IndexOf(city);
+
+			if (partOfTheDayIndex == -1)
 			{
-				"banana",
-				"apple",
-				"orange",
-				"grapefruit",
-				"kiwi",
-				"pineapple",
-				"grapes"
-			});
-            
-            if (workingDays.IndexOf(day) != -1 && fruits.IndexOf(product) != -1)
-            {
+				Console.WriteLine("Hey, you have a great garden with {броя цвета} {вид цветя} and {останалата сума} leva left");
+			}
+			else
+			{
 
-            bool isWeekEnd = workingDays.IndexOf(day) == -1;
-			bool isWeekEnd = workingDays.IndexOf(day) == -1;
-            List<double> weekEndPrice = isWeekEnd ? priceWeekend : priceWorkingday;
+				int result = ;
 
-			double result = (weekEndPrice[fruits.IndexOf(product)]) * quantity;
-            } else {
 
-                Console.WriteLine("error");
-            }
-		
-           
+				Console.WriteLine($"Not enough money, you need {нужната сума} leva more}.");
+
+			}
+
 			//End of Main()-->
 		}
 	}
@@ -133,7 +128,7 @@ namespace ConsoleApp_SoftUni
 		{
 			return value >= minimum && value <= maximum;
 		}
-		public static bool IsBetween(this int value, double minimum, double maximum)
+		public static bool IsBetween(this double value, double minimum, double maximum)
 		{
 			return value >= minimum && value <= maximum;
 		}
