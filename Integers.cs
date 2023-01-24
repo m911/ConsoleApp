@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.CodeDom.Compiler;
@@ -34,9 +34,10 @@ namespace ConsoleApp_SoftUni
 				DayOfWeek.Wednesday.ToString(),
 				DayOfWeek.Thursday.ToString(),
 				DayOfWeek.Friday.ToString(),
+                DayOfWeek.Saturday.ToString(),
+                DayOfWeek.Sunday.ToString(),
 			});
 
-			bool isWeekEnd = workingDays.IndexOf(day) > 5;
 
 			List<double> priceWorkingday = new List<double>(new double[]
 			{
@@ -44,9 +45,9 @@ namespace ConsoleApp_SoftUni
 			});
 
 			List<double> priceWeekend = new List<double>(new double[]
-		{
-				2.70,1.25,0.9,1.6,3,5.6,4.2
-		});
+            {
+                    2.70,1.25,0.90,1.6,3,5.6,4.2
+            });
 
 			List<string> fruits = new List<string>(new string[]
 			{
@@ -58,10 +59,21 @@ namespace ConsoleApp_SoftUni
 				"pineapple",
 				"grapes"
 			});
+            
+            if (workingDays.IndexOf(day) != -1 && fruits.IndexOf(product) != -1)
+            {
 
+            bool isWeekEnd = workingDays.IndexOf(day) == -1;
+			bool isWeekEnd = workingDays.IndexOf(day) == -1;
+            List<double> weekEndPrice = isWeekEnd ? priceWeekend : priceWorkingday;
 
-			string result = ((!isWeekEnd ? priceWorkingday : priceWeekend)[fruits.IndexOf(product)]) * quantity;
-			Console.WriteLine(result);
+			double result = (weekEndPrice[fruits.IndexOf(product)]) * quantity;
+            } else {
+
+                Console.WriteLine("error");
+            }
+		
+           
 			//End of Main()-->
 		}
 	}
@@ -162,4 +174,3 @@ namespace ConsoleApp_SoftUni
 		}
 	}
 }
-
