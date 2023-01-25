@@ -154,16 +154,15 @@ namespace ConsoleApp_SoftUni
 			int[] discounts = { 10, 15, 15, 15, 20 };
 			int discountOrIncrease = discounts[selectedProduct];
 
-			double middlePrice = prices[selectedProduct] * quantity;
-			double totalPrice = 0;
+			double totalPrice = prices[selectedProduct] * quantity;
 
 			if (selectedProduct.IsBetween(0, 2) && quantity > productDiscounts[selectedProduct])
 			{
-				totalPrice = middlePrice.CalcPersent(discountOrIncrease).loweredSum;
+				totalPrice = totalPrice.CalcPersent(discountOrIncrease).loweredSum;
 			}
 			else if (selectedProduct.IsBetween(3, 4) && quantity > productDiscounts[selectedProduct])
 			{
-				totalPrice = middlePrice.CalcPersent(discountOrIncrease).increasedSum;
+				totalPrice = totalPrice.CalcPersent(discountOrIncrease).increasedSum;
 
 			}
 			                
