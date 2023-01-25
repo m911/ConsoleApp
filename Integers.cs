@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp_SoftUni
 {
-    class Methods
+	class Methods
 	{
 
 		static int Position(bool[] array)
@@ -114,7 +114,7 @@ namespace ConsoleApp_SoftUni
 			this.firstMember = _outfit;
 			this.shoes = _shoes;
 		}
-        
+
 		static void Main()
 		{
 			List<string> workingDays = new List<string>(new string[]
@@ -136,8 +136,8 @@ namespace ConsoleApp_SoftUni
 			//double sells = DoubleRead();
 			//string day = StringRead();
 
-			 string[] flowerNames =
-			{
+			string[] flowerNames =
+		   {
 				"Roses",
 				"Dahlias",
 				"Tulips",
@@ -145,35 +145,39 @@ namespace ConsoleApp_SoftUni
 				"Gladiolus"
 			};
 
-            List<string> stringList = new List<string>(flowerNames);
-            
+			List<string> stringList = new List<string>(flowerNames);
+
 			int selectedProduct = stringList.IndexOf(userString);
 
 			double[] prices = { 5, 3.8, 2.8, 3, 2.5 };
-            int[] productDiscounts = {80,90,80,120,80}
-            double discountOrIncrease;
-            if (selectedProduct.IsBetween(0,2))
-            {
-                
-            } else 
-            {
+			int[] productDiscounts = { 80, 90, 80, 120, 80 };
+			int[] discounts = { 10, 15, 15, 15, 20 };
+			int discountOrIncrease = discounts[selectedProduct];
 
-            }
+			double middlePrice = prices[selectedProduct] * quantity;
+			double totalPrice = 0;
 
-
-
-            double totalPrice = prices[selectedProduct] * quantity * discountOrIncrease;
-			if (totalPrice<=budget)
+			if (selectedProduct.IsBetween(0, 2) && quantity > productDiscounts[selectedProduct])
 			{
-				Console.WriteLine($"Hey, you have a great garden with {quantity} {userString} and {budget - totalPrice:f2} leva left.");
+				totalPrice = middlePrice.CalcPersent(discountOrIncrease).loweredSum;
+			}
+			else if (selectedProduct.IsBetween(3, 4) && quantity > productDiscounts[selectedProduct])
+			{
+				totalPrice = middlePrice.CalcPersent(discountOrIncrease).increasedSum;
+
+			}
+			                
+			if (totalPrice <= budget)
+			{
+				Console.WriteLine($"Hey, you have a great garden with {quantity} {flowerNames[selectedProduct]} and {budget - totalPrice:f2} leva left.");
 			}
 			else
-            {
-				Console.WriteLine($"Not enough money, you need {totalPrice - budget:f2} leva more..");
+			{
+				Console.WriteLine($"Not enough money, you need {totalPrice - budget:f2} leva more.");
 
 			}
 
 			//End of Main()-->
 		}
-	}	
+	}
 }
