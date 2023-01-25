@@ -114,6 +114,7 @@ namespace ConsoleApp_SoftUni
 			this.firstMember = _outfit;
 			this.shoes = _shoes;
 		}
+        
 		static void Main()
 		{
 			List<string> workingDays = new List<string>(new string[]
@@ -130,13 +131,12 @@ namespace ConsoleApp_SoftUni
 			//Kinds ot Console read -->
 			//double age = DoubleRead();
 			string userString = StringRead();
-			int flowersCount = IntRead();
+			int quantity = IntRead();
 			int budget = IntRead();
 			//double sells = DoubleRead();
 			//string day = StringRead();
 
-
-			 string[] flowers =
+			 string[] flowerNames =
 			{
 				"Roses",
 				"Dahlias",
@@ -145,28 +145,35 @@ namespace ConsoleApp_SoftUni
 				"Gladiolus"
 			};
 
+            List<string> stringList = new List<string>(flowerNames);
+            
+			int selectedProduct = stringList.IndexOf(userString);
+
 			double[] prices = { 5, 3.8, 2.8, 3, 2.5 };
+            int[] productDiscounts = {80,90,80,120,80}
+            double discountOrIncrease;
+            if (selectedProduct.IsBetween(0,2))
+            {
+                
+            } else 
+            {
 
-			int partOfTheDayIndex = stringList.IndexOf(userString);
-			//int fruitsIndex = commisions.IndexOf(city);
+            }
 
-			if (partOfTheDayIndex == -1)
+
+
+            double totalPrice = prices[selectedProduct] * quantity * discountOrIncrease;
+			if (totalPrice<=budget)
 			{
-				Console.WriteLine("Hey, you have a great garden with {���� �����} {��� �����} and {���������� ����} leva left");
+				Console.WriteLine($"Hey, you have a great garden with {quantity} {userString} and {budget - totalPrice:f2} leva left.");
 			}
 			else
-			{
-
-				int result = ;
-
-
-				Console.WriteLine($"Not enough money, you need {������� ����} leva more}.");
+            {
+				Console.WriteLine($"Not enough money, you need {totalPrice - budget:f2} leva more..");
 
 			}
 
 			//End of Main()-->
 		}
-	}
-
-	
+	}	
 }
