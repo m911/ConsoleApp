@@ -3,77 +3,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp_SoftUni
 {
-	class Integers : Methods
-	{
-		string firstMember = "";
-		string shoes = "";
-
-		public Integers(string _outfit, string _shoes)
-		{
-			this.firstMember = _outfit;
-			this.shoes = _shoes;
-		}
-
-		public void setMembers(string _outfit, string _shoes)
-		{
-			this.firstMember = _outfit;
-			this.shoes = _shoes;
-		}
-		static void Main()
-		{
-			List<string> workingDays = new List<string>(new string[]
-			{
-				DayOfWeek.Monday.ToString(),
-				DayOfWeek.Tuesday.ToString(),
-				DayOfWeek.Wednesday.ToString(),
-				DayOfWeek.Thursday.ToString(),
-				DayOfWeek.Friday.ToString(),
-				DayOfWeek.Saturday.ToString(),
-				DayOfWeek.Sunday.ToString(),
-			});
-
-			//Kinds ot Console read -->
-			//double age = DoubleRead();
-			string userString = StringRead();
-			int flowersCount = IntRead();
-			int budget = IntRead();
-			//double sells = DoubleRead();
-			//string day = StringRead();
-
-
-			 string[] flowers =
-			{
-				"Roses",
-				"Dahlias",
-				"Tulips",
-				"Narcissus",
-				"Gladiolus"
-			};
-
-			double[] prices = { 5, 3.8, 2.8, 3, 2.5 };
-
-			int partOfTheDayIndex = stringList.IndexOf(userString);
-			//int fruitsIndex = commisions.IndexOf(city);
-
-			if (partOfTheDayIndex == -1)
-			{
-				Console.WriteLine("Hey, you have a great garden with {броя цвета} {вид цветя} and {останалата сума} leva left");
-			}
-			else
-			{
-
-				int result = ;
-
-
-				Console.WriteLine($"Not enough money, you need {нужната сума} leva more}.");
-
-			}
-
-			//End of Main()-->
-		}
-	}
-
-	class Methods
+    class Methods
 	{
 
 		static int Position(bool[] array)
@@ -168,4 +98,75 @@ namespace ConsoleApp_SoftUni
 
 		}
 	}
+	class Integers : Methods
+	{
+		string firstMember = "";
+		string shoes = "";
+
+		public Integers(string _outfit, string _shoes)
+		{
+			this.firstMember = _outfit;
+			this.shoes = _shoes;
+		}
+
+		public void setMembers(string _outfit, string _shoes)
+		{
+			this.firstMember = _outfit;
+			this.shoes = _shoes;
+		}
+		static void Main()
+		{
+			List<string> workingDays = new List<string>(new string[]
+			{
+				DayOfWeek.Monday.ToString(),
+				DayOfWeek.Tuesday.ToString(),
+				DayOfWeek.Wednesday.ToString(),
+				DayOfWeek.Thursday.ToString(),
+				DayOfWeek.Friday.ToString(),
+				DayOfWeek.Saturday.ToString(),
+				DayOfWeek.Sunday.ToString(),
+			});
+
+			//Kinds ot Console read -->
+			//double age = DoubleRead();
+			string userString = StringRead();
+			int flowersCount = IntRead();
+			int budget = IntRead();
+			//double sells = DoubleRead();
+			//string day = StringRead();
+
+
+			 string[] flowers =
+			{
+				"Roses",
+				"Dahlias",
+				"Tulips",
+				"Narcissus",
+				"Gladiolus"
+			};
+
+			double[] prices = { 5, 3.8, 2.8, 3, 2.5 };
+
+			int partOfTheDayIndex = stringList.IndexOf(userString);
+			//int fruitsIndex = commisions.IndexOf(city);
+
+			if (partOfTheDayIndex == -1)
+			{
+				Console.WriteLine("Hey, you have a great garden with {пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ} {пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ} and {пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ} leva left");
+			}
+			else
+			{
+
+				int result = ;
+
+
+				Console.WriteLine($"Not enough money, you need {пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ} leva more}.");
+
+			}
+
+			//End of Main()-->
+		}
+	}
+
+	
 }
