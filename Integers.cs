@@ -130,45 +130,53 @@ namespace ConsoleApp_SoftUni
 
 			//Kinds ot Console read -->
 			//double age = DoubleRead();
+			int budget = IntRead();
 			string userString = StringRead();
 			int quantity = IntRead();
-			int budget = IntRead();
 			//double sells = DoubleRead();
 			//string day = StringRead();
 
+			//Define string list to search in
 			string[] flowerNames =
-		   {
-				"Roses",
-				"Dahlias",
-				"Tulips",
-				"Narcissus",
-				"Gladiolus"
+			{
+				"Spring", "Summer", "Autumn", "Winter"
 			};
-
 			List<string> stringList = new List<string>(flowerNames);
 
-			int selectedProduct = stringList.IndexOf(userString);
+			//Define prices and discounts
+			int[] prices = { 3000, 4200, 2600 };
+			int[] discountCondition = { 6, 11 };
+			int[] discounts = { 10, 15, 12 };
+			int selectedSeason = stringList.IndexOf(userString);
 
-			double[] prices = { 5, 3.8, 2.8, 3, 2.5 };
-			int[] productDiscounts = { 80, 90, 80, 120, 80 };
-			int[] discounts = { 10, 15, 15, 15, 20 };
-			int discountOrIncrease = discounts[selectedProduct];
-
-			double totalPrice = prices[selectedProduct] * quantity;
-
-			if (selectedProduct.IsBetween(0, 2) && quantity > productDiscounts[selectedProduct])
+			//Price defining
+			int price;
+			if (selectedSeason.IsBetween(1, 2))
 			{
-				totalPrice = totalPrice.CalcPersent(discountOrIncrease).loweredSum;
+				price = prices[1];
 			}
-			else if (selectedProduct.IsBetween(3, 4) && quantity > productDiscounts[selectedProduct])
+			else
 			{
-				totalPrice = totalPrice.CalcPersent(discountOrIncrease).increasedSum;
-
+				price = prices[selectedSeason];
 			}
-			                
+			double totalPrice = prices[selectedSeason] * quantity;
+
+			//Discounts
+			int discount = discounts[selectedSeason];
+			if (quantity <= discountCondition[selectedSeason] | quantity > discountCondition.Length - 1)
+			{
+				totalPrice = totalPrice.CalcPersent(discount).loweredSum;
+			}
+
+			if (quantity % 2 == 0 && selectedSeason !=2)
+			{
+				totalPrice = totalPrice.CalcPersent(discount).loweredSum;
+			}
+
+			//Output condition
 			if (totalPrice <= budget)
 			{
-				Console.WriteLine($"Hey, you have a great garden with {quantity} {flowerNames[selectedProduct]} and {budget - totalPrice:f2} leva left.");
+				Console.WriteLine($"Hey, you have a great garden with {quantity} {flowerNames[selectedSeason]} and {budget - totalPrice:f2} leva left.");
 			}
 			else
 			{
@@ -176,6 +184,9 @@ namespace ConsoleApp_SoftUni
 
 			}
 
+			// Keep the console window open in debug mode.
+			System.Console.WriteLine("Press any key to exit.");
+			System.Console.ReadKey();
 			//End of Main()-->
 		}
 	}
