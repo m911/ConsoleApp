@@ -144,31 +144,26 @@ namespace ConsoleApp_SoftUni
 			List<string> stringList = new List<string>(flowerNames);
 
 			//Define prices and discounts
-			int[] prices = { 3000, 4200, 2600 };
-			int[] discountCondition = { 6, 11 };
-			int[] discounts = { 10, 15, 12 };
+			int[] prices = { 3000, 4200, 4200, 2600 };
+			int[] discountCondition = { 6, 11, int.MaxValue };
+			int[] discounts = { 10, 15, 25 };
 			int selectedSeason = stringList.IndexOf(userString);
 
 			//Price defining
-			int price;
-			if (selectedSeason.IsBetween(1, 2))
-			{
-				price = prices[1];
-			}
-			else
-			{
-				price = prices[selectedSeason];
-			}
-			double totalPrice = prices[selectedSeason] * quantity;
+			double totalPrice = prices[selectedSeason];
 
 			//Discounts
 			int discount = discounts[selectedSeason];
-			if (quantity <= discountCondition[selectedSeason] | quantity > discountCondition.Length - 1)
+			for (int i = 0; i < discountCondition.Length; i++)
 			{
-				totalPrice = totalPrice.CalcPersent(discount).loweredSum;
+				if (quantity >= discountCondition[i])
+				{
+					discount = discounts[i];
+				}
 			}
+			totalPrice = totalPrice.CalcPersent(discount).loweredSum;
 
-			if (quantity % 2 == 0 && selectedSeason !=2)
+			if (quantity % 2 == 0 && selectedSeason != 2)
 			{
 				totalPrice = totalPrice.CalcPersent(discount).loweredSum;
 			}
@@ -176,17 +171,17 @@ namespace ConsoleApp_SoftUni
 			//Output condition
 			if (totalPrice <= budget)
 			{
-				Console.WriteLine($"Hey, you have a great garden with {quantity} {flowerNames[selectedSeason]} and {budget - totalPrice:f2} leva left.");
+				Console.WriteLine("Yes! You have {0:f2} leva left.", budget - totalPrice);
 			}
 			else
 			{
-				Console.WriteLine($"Not enough money, you need {totalPrice - budget:f2} leva more.");
+				Console.WriteLine("Not enough money! You need {0:f2} leva.", totalPrice - budget);
 
 			}
 
 			// Keep the console window open in debug mode.
-			System.Console.WriteLine("Press any key to exit.");
-			System.Console.ReadKey();
+			//System.Console.WriteLine("Press any key to exit.");
+			//System.Console.ReadKey();
 			//End of Main()-->
 		}
 	}
