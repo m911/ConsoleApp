@@ -130,52 +130,57 @@ namespace ConsoleApp_SoftUni
 
 			//Kinds ot Console read -->
 			//double age = DoubleRead();
-			int budget = IntRead();
+			//int budget = IntRead();
+			double budget = DoubleRead();
 			string userString = StringRead();
-			int quantity = IntRead();
-			//double sells = DoubleRead();
+			//int budget = IntRead();
 			//string day = StringRead();
 
 			//Define string list to search in
-			string[] flowerNames =
+			string[] arrayList =
 			{
-				"Spring", "Summer", "Autumn", "Winter"
+				"summer", "winter"
 			};
-			List<string> stringList = new List<string>(flowerNames);
-
-			//Define prices and discounts
-			int[] prices = { 3000, 4200, 4200, 2600 };
-			int[] discountCondition = { 6, 11, int.MaxValue };
-			int[] discounts = { 10, 15, 25 };
+			List<string> stringList = new List<string>(arrayList);
 			int selectedSeason = stringList.IndexOf(userString);
 
 			//Price defining
-			double totalPrice = prices[selectedSeason];
+			double[,,] totalArray = new double[2,2,1] { { { 30 }, { 70 } }, { { 40 }, { 80 } } };
+			double totalBudget=0;
+
+			//Define discounts condition and their values
+			int[] discountCondition = { 30, 70, 18 };
+			int[] discounts = { 10, 15, 25 };
 
 			//Discounts
-			int discount = discounts[selectedSeason];
+			int discount = discounts[0];
 			for (int i = 0; i < discountCondition.Length; i++)
 			{
-				if (quantity >= discountCondition[i])
+				if (budget <= discountCondition[i])
 				{
 					discount = discounts[i];
+					break;
 				}
 			}
-			totalPrice = totalPrice.CalcPersent(discount).loweredSum;
+			totalBudget = totalBudget.CalcPersent(discount).loweredSum;
 
-			if (quantity % 2 == 0 && selectedSeason != 2)
+			if (budget % 2 == 0 && selectedSeason != 2)
 			{
-				totalPrice = totalPrice.CalcPersent(discount).loweredSum;
+				totalBudget = totalBudget.CalcPersent(5).loweredSum;
 			}
 
+			//total = totalArray [indexBudget][indexSeason][percent]
+			//{{{30},{70}},{{40},{80}}} --> [indexBudget,indexSeason]
+			//total = totalArray[indexBudget, season , percent][percent]
+
 			//Output condition
-			if (totalPrice <= budget)
+			if (totalBudget <= budget)
 			{
-				Console.WriteLine("Yes! You have {0:f2} leva left.", budget - totalPrice);
+				Console.WriteLine("Yes! You have {0:f2} leva left.", budget - totalBudget);
 			}
 			else
 			{
-				Console.WriteLine("Not enough money! You need {0:f2} leva.", totalPrice - budget);
+				Console.WriteLine("Not enough money! You need {0:f2} leva.", totalBudget - budget);
 
 			}
 
