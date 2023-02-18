@@ -150,7 +150,7 @@ namespace ConsoleApp_SoftUni
 		public void CalcTotalPrice (int orders)
 		{
 
-			Prices.Values.Aggregate()
+			//Prices.Values.Aggregate()
 		}
 
 
